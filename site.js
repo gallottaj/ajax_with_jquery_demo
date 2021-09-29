@@ -4,7 +4,8 @@ $(function (){
 
 $("#get-songs-from-api").click(function () {
     console.log("You clicked the add song button");
-    $.ajax( {
+    //ajax does not refresh the entire page, instead it does a partial page update
+    $.ajax({
         dataType: "Json",
         url: "getsongs.php",
         success: function(songs){
@@ -13,9 +14,9 @@ $("#get-songs-from-api").click(function () {
             $.each( songs, function(i, song) {
                 var songString = "<li>Title: " + song.title + " Arist: " + song.artist + "</li>";
                 console.log(songString);
-                $(songString).append("#songs");
-            })
-        }
-    })
+                $(songString).appendTo("#songs");
+            });
+        },
+    });
 });
 });
